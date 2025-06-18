@@ -4,8 +4,16 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['test']
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['run', 'deploy', 'gcp-cicd-demo', '--image', 'gcr.io/$PROJECT_ID/gcp-cicd-demo', '--region', 'us-central1', '--platform=managed', '--allow-unauthenticated']
+    args:
+      [
+        'run', 'deploy', 'gcp-cicd-demo',
+        '--image', 'gcr.io/$PROJECT_ID/gcp-cicd-demo',
+        '--region', 'us-central1',
+        '--platform=managed',
+        '--allow-unauthenticated',
+        '--service-account=cloud-build-sa@glassy-totality-463313-r9.iam.gserviceaccount.com'
+      ]
 images:
   - 'gcr.io/$PROJECT_ID/gcp-cicd-demo'
 options:
-  logging: CLOUD_LOGGING_ONLY  # Stores logs in Cloud Logging [5][6]
+  logging: CLOUD_LOGGING_ONLY
