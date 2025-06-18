@@ -7,3 +7,5 @@ steps:
     args: ['run', 'deploy', 'gcp-cicd-demo', '--image', 'gcr.io/$PROJECT_ID/gcp-cicd-demo', '--region', 'us-central1', '--platform=managed', '--allow-unauthenticated']
 images:
   - 'gcr.io/$PROJECT_ID/gcp-cicd-demo'
+options:
+  logging: CLOUD_LOGGING_ONLY  # Stores logs in Cloud Logging [5][6]
